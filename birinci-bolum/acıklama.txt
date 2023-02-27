@@ -1,0 +1,66 @@
+const names= ['ipek', 'ülfet', 'kaylan']
+
+function App(){
+    return (
+    <>
+      {names.map(name =>(<h1>{name}</h1>))}
+      <h1>Ege Üniversty</h1>
+
+    </>
+    )
+}
+root.render(
+    <App></App>,
+)
+    JSX NEDİR?
+     JSX yapısında birden fazla satır var ise bütün satırları kapsayan bir tane kapsayıcıya parent elemente ihtiyaç vardır. Buna fragment denir ve kısa yol olarak  <></> kullanılır.   <React.Fragment></React.Fragment> bu şekilde de kullanılabilir. 
+
+    JSX kullanmak zorunda değiliz javascriptte yazabiliriz ancak bu işimizi zorlaştırır. JSX bize daha kolay bir yol sunar ve kodun okunurluluğunu da arttırır. 
+    JSX de  class attribute için className kullanılır. 
+    JSX de html'e stiil attribute yazmak için {{padding: '10px', margin:'5px', backgroundColor:'black'}} şeklinde yazılır. Aslında bu bir Js objectir. Dıştaki parentez JS kodu olduğundan içteki parentez ise ogject olduğundan verilir.
+
+    JSX içine JS expression yazmak için {} kullanılırız. yukarıdaki {name} bir JS Expression' dır.
+
+     PROPS NEDİR?
+      React componentleri kullanan bir kütüphanedir. Reactın temel işlevi bu componentleri sayfada uygun yerlere yerleştirmektir. Bazı durumlarda bu componentler arasında veri 
+      alışverişi olur. Bu veri alışverişi de propslar yardımı ile sağlanır. Veri alışverişi parent componenten child componente doğru yapılır.  Bu özellikler parent componentte 
+      belirlenir ve child component vasıtası ile gösteririz. 
+
+      <Card cardTitle= 'cardtitle'/> cardTitle'ı bir attribute olarak yazarız.
+
+      <h5 className="card-title">{props.cardTitle}</h5> props sayesinde de kolayca çekebiliriz
+
+
+      
+
+   /* 
+   bir component şu şekillerde yazılabilir; 
+   BU BİR FUNCTIONAL COMPONENT
+    function App (){ 
+        return() 
+    } 
+
+    ya da 
+    const App = ()=>{
+        return()
+    }
+
+    ya da 
+    BU BİR CLASS BASE COMPONENT
+    class Car extends React.Component {
+        render() {
+            return <h2>Hi, I am a Car!</h2>;
+        }
+    }
+    */
+
+    STATE = DURUM demektir bir componentin o anda taşıdığı bilgidir. State güncellendikçe taşıdığı bilgi değişebilir. Hook yapısında önce state olduğunda class componentler kullanırken state ihtiyaç olmayan ve propsların yeterli olduğu durumlarda da functional componentler kullanılırdı. Ancak hook yapısı ile birlikte class ve funtional componentler arasındaki fark ortadan kalktı. Hook kullanılmıyorsa bir state oluşturmak için class component yazılmalıdır. Stateleri değiştirebilirdir içerikler için Propsları ise değiştitilemez içerikler için gödeririz. 
+
+
+
+
+
+    
+   
+
+
