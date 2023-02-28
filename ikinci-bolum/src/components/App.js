@@ -52,17 +52,48 @@ class App extends React.Component{
                 "When a mafia accountant is taken hostage on his beat, a police officer – wracked by guilt from a prior stint as a negotiator – must negotiate the standoff, even as his own family is held captive by the mob.",
               'id': 13,
             },
-          ]
+          ],
+          searchQuery: ''
+          // SearchBar daki property i buraya ekledik böylece tekrar state yazmak yerine var olan state içine yazdık ve bu stati güncelleyeceğiz
     }
+
+    deleteMovie = (movie)=>{
+      const newMovieList = this.state.movies.filter(m => m.id !== movie.id);
+
+      /*this.setState({
+        movies: newMovieList
+      })
+      bu şablon genelde önceki state durumu boş bir array olduğunda kullanılır.Yani bizim elimizde film nesnesi olmasaydı yukarıdaki şablonu kullanmak daha mantıklı
+       Ama şuanda bizim state durumu boş değil içinde içerik var yani var olan filmler üzerinden stati güncelliyoruz. Bu yüzden var olan state i parametre olarak almak daha doğru bir yöntem
+      */
+     this.setState(state => ({movies: newMovieList}))
+    }
+
+
+
+    searchMovie = (event) =>{
+     this.setState({searchQuery : event.target.value})
+
+    }
+
     render(){
+
+      let filteredMovies = this.state.movies.filter((movie)=>{
+        return movie.name.toLocaleLowerCase().indexOf(this.state.searchQuery.toLocaleLowerCase()) !== -1
+      })
         return(
            <div className="container">
             <div className="row">
                 <div className="col-lg-12">
-                    <SearchBar></SearchBar>
+                    <SearchBar searchMovieProps= {this.searchMovie}></SearchBar>
+                    {/* searchMovieProps searchMovie function ı çalıştırıyor */}
                 </div>
             </div>
-            <MovieList></MovieList>
+            <MovieList 
+            movies={filteredMovies}
+            deleteMovieProp= {this.deleteMovie}
+            ></MovieList>
+            {/* deleteMovie function ile delete buttonunu birbirine bağlamak için (yani parent componentten child componente bir bilgi göndereceğiz) en kolay yol deleteMovie functionı PROPS haline dönüştürmektir. Bu yüzden deleteMovieProp adında bir prop yazdık. Bunun içinde this kullanmamızın nedeni de class component olduğu için. */}
            </div>
 
         )

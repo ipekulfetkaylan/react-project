@@ -24,7 +24,7 @@ root.render(
      PROPS NEDİR?
       React componentleri kullanan bir kütüphanedir. Reactın temel işlevi bu componentleri sayfada uygun yerlere yerleştirmektir. Bazı durumlarda bu componentler arasında veri 
       alışverişi olur. Bu veri alışverişi de propslar yardımı ile sağlanır. Veri alışverişi parent componenten child componente doğru yapılır.  Bu özellikler parent componentte 
-      belirlenir ve child component vasıtası ile gösteririz. 
+      belirlenir ve child component vasıtası ile gösteririz. Parent componentten child componente gitmenin en kolay yolu PROP oluşturmaktır
 
       <Card cardTitle= 'cardtitle'/> cardTitle'ı bir attribute olarak yazarız.
 
