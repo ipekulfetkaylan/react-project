@@ -56,6 +56,8 @@ root.render(
 
     STATE = DURUM demektir bir componentin o anda taşıdığı bilgidir. State güncellendikçe taşıdığı bilgi değişebilir. Hook yapısında önce state olduğunda class componentler kullanırken state ihtiyaç olmayan ve propsların yeterli olduğu durumlarda da functional componentler kullanılırdı. Ancak hook yapısı ile birlikte class ve funtional componentler arasındaki fark ortadan kalktı. Hook kullanılmıyorsa bir state oluşturmak için class component yazılmalıdır. Stateleri değiştirebilirdir içerikler için Propsları ise değiştitilemez içerikler için gödeririz. 
 
+    ROUTİNG= url'e göre içeriği yönlendirmeye denir. Bu işlem react router paketi ile yapılır
+
 
 
 

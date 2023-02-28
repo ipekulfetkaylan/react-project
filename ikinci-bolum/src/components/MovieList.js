@@ -13,7 +13,7 @@ import React from "react";
                         <img src={movie.imageURL} className="card-img-top" alt="sample movies"></img>
                         <div className="card-body">
                             <h5 className="card-title">{movie.name}</h5>
-                            <p className="card-text">{movie.overview}</p>
+                            <p className="card-text">{movie.overwiev}</p>
                             <div className="d-flex justify-content-between align-items-center">
                                 <button type="button" onClick={(event)=>props.deleteMovieProp(movie)} className="btn btn-outline-danger btn-md">Delete</button>
                                 {/* deleteMovie function prop haline dönüştürüp onClick içinde kullandık burada aynı şekilde ne sileceğini belirtmek için movie parametresini gönderdik */}

@@ -1,12 +1,14 @@
 import React from "react";
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import axios from "axios";
+import AddMovie from "./AddMovie";
 
 
 class App extends React.Component{
     // ilerde alacağımız film sayısı değişebilceği için movies arryini state içine gömdük. State bir obje o yüzden movies bir property olarak geleceği için = değil : koyuyoruz
     state= {
-        movies: [
+       /* movies: [
             {
               'name': "The Matrix 3",
               'rating': "8.1",
@@ -53,22 +55,71 @@ class App extends React.Component{
               'id': 13,
             },
           ],
+          movies i json dosyasından çekeceğimiz için şimdiye kadar kullandığımız bu movie arrayini kaldırıyoruz.
+          */
+
+          movies: [],
           searchQuery: ''
           // SearchBar daki property i buraya ekledik böylece tekrar state yazmak yerine var olan state içine yazdık ve bu stati güncelleyeceğiz
     }
 
+    //dışarıdan bir istek yapacaksak eğer componentDidMount içinde yapmak en mantıklısıdır.componentDidMount UI componentleri Dom da yerini aldıktan hemen sonra çalışıyor. O yüzden bir http isteği yapacaksak bu metodun içinde yapmak en iyisi
+
+    /*
+    async componentDidMount(){
+      const baseURL= "http://localhost:3002/movies"; //fetch bu url üzerinden yapacağız çünkü verilerimiz bu url de 
+      const response=await fetch(baseURL);
+      // fetch bize bir promise dönecek çünkü promise tabanlı. Ancak biz bir json istiyoruz o yüzden response.json() yapıyoruz datayı json a çeviriyoruz
+      const data=await response.json();
+      //fetch asenkron sorgular yapıyor bunu kabul etmek için function ı asenkron hale getirmek gerekiyor bunun için function ın başına ASYNC ekliyoruz ve aldığımız verilerin başına AWAIT ekliyoruz. Böylece dönen promise asenkron bir şekilde alabiliriz
+      this.setState({movies: data})
+      //sorgu sonrası gelen bilgiler ile stati güncelleyerek ekrana basabiliriz.
+    }
+    */
+
+    async componentDidMount(){
+      //aynısını fetch ile de yapıyoruz ancak fetch bize promise döndüğü için onu jsona çeviriyoruz axios ta ise direkt olarak veriyi tek basamakta çekebiliyoruz
+      const response= await axios.get("http://localhost:3002/movies");
+      this.setState({movies: response.data})
+    }
+
+    /*
     deleteMovie = (movie)=>{
       const newMovieList = this.state.movies.filter(m => m.id !== movie.id);
 
       /*this.setState({
         movies: newMovieList
       })
-      bu şablon genelde önceki state durumu boş bir array olduğunda kullanılır.Yani bizim elimizde film nesnesi olmasaydı yukarıdaki şablonu kullanmak daha mantıklı
-       Ama şuanda bizim state durumu boş değil içinde içerik var yani var olan filmler üzerinden stati güncelliyoruz. Bu yüzden var olan state i parametre olarak almak daha doğru bir yöntem
-      */
+       bu şablon genelde önceki state durumu boş bir array olduğunda kullanılır.Yani bizim elimizde film nesnesi olmasaydı yukarıdaki şablonu kullanmak daha mantıklı
+       Ama şuanda bizim state durumu boş değil içinde içerik var yani var olan filmler üzerinden stati güncelliyoruz. Bu yüzden var olan state i parametre olarak almak daha doğru 
+       bir yöntem
      this.setState(state => ({movies: newMovieList}))
     }
+    */
 
+   //FETCH 
+   /*
+    deleteMovie = async (movie)=>{
+      const baseURL= `http://localhost:3002/movies/${movie.id}`;
+      await fetch(baseURL,{
+        method: 'DELETE'
+      })
+      //yukarıdaki fetch yapısında get metodunu belirtmedik çünkü default olarak get ile geliyor ancak burada metodu delete diye belirtmemiz gerekiyor
+      const newMovieList = this.state.movies.filter(m => m.id !== movie.id);
+      this.setState(state =>({
+        movies: newMovieList
+      }))     
+    }
+    */
+
+   //AXİOS
+    deleteMovie = async (movie)=>{
+      axios.delete(`http://localhost:3002/movies/${movie.id}`)
+      const newMovieList = this.state.movies.filter(m => m.id !== movie.id);
+      this.setState(state =>({
+        movies: newMovieList
+      }))     
+    }
 
 
     searchMovie = (event) =>{
@@ -94,6 +145,8 @@ class App extends React.Component{
             deleteMovieProp= {this.deleteMovie}
             ></MovieList>
             {/* deleteMovie function ile delete buttonunu birbirine bağlamak için (yani parent componentten child componente bir bilgi göndereceğiz) en kolay yol deleteMovie functionı PROPS haline dönüştürmektir. Bu yüzden deleteMovieProp adında bir prop yazdık. Bunun içinde this kullanmamızın nedeni de class component olduğu için. */}
+
+            <AddMovie></AddMovie>
            </div>
 
         )

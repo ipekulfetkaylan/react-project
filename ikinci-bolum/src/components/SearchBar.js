@@ -20,8 +20,8 @@ class SeacrhBar extends React.Component{
     render(){
         return(
             <form onSubmit={this.handleFormSubmit}>
-                <div className="form-row mb-5 mt-3">
-                    <div className="col-12">
+                <div className="row mb-5 mt-3 ">
+                    <div className="col-9">
                         <input 
                         // onChange={(event) =>this.setState({searchQuery:event.target.value})} 
                         onChange={this.props.searchMovieProps}
@@ -36,7 +36,12 @@ class SeacrhBar extends React.Component{
                          olarak düşünebiliriz.
                          İnputun içine direkt value değeri verdiğimizde o value değerini düzenleyemiyoruz. O yüzden bu value değerini dinamik hale getirmemiz gerek. Value 
                          değerine searchQuery gönderdiğimiz de state durumu value olarak atanıyor böylece artık searchBar ı react tarafından kontrol edebilir hale geliyoruz.
+                         searchMovie function da value değerini searchQuery : event.target.value şeklinde güncelleme yaptığımız için de value değerini burada kaldırıyoruz.
                         */}
+                    </div> 
+                    <div className="col-3">
+                        <button type="button"
+                        className="btn btn-md btn-danger">Add Movie</button>
                     </div>
                 </div>
             </form>
