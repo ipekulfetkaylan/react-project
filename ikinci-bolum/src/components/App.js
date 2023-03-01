@@ -3,6 +3,8 @@ import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import axios from "axios";
 import AddMovie from "./AddMovie";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import EditMovie from "./EditMovie";
 
 
 class App extends React.Component{
@@ -112,7 +114,7 @@ class App extends React.Component{
     }
     */
 
-   //AXİOS
+   //AXİOS DELETE MOVİE
     deleteMovie = async (movie)=>{
       axios.delete(`http://localhost:3002/movies/${movie.id}`)
       const newMovieList = this.state.movies.filter(m => m.id !== movie.id);
@@ -121,34 +123,64 @@ class App extends React.Component{
       }))     
     }
 
-
+    //SEARCH MOVİE
     searchMovie = (event) =>{
      this.setState({searchQuery : event.target.value})
+    }
 
+    //ADD MOVİE
+    addMovie = async (movie) =>{
+      await axios.post("http://localhost:3002/movies/", movie)
+      this.setState(state => ({
+        movies:state.movies.concat([movie])
+      }))
     }
 
     render(){
 
-      let filteredMovies = this.state.movies.filter((movie)=>{
+      let filteredMovies = this.state.movies.filter(
+        (movie)=>{
         return movie.name.toLocaleLowerCase().indexOf(this.state.searchQuery.toLocaleLowerCase()) !== -1
+      }
+      ).sort((a,b)=>{
+        return a.id < b.id ? 1 : a.id > b.id ? -1 :0
       })
+      // burada sort metodu yazmamızın sebebi en son eklediğimiz filmin en başta görünmesini istediğimiz için bu metodu yazmadan en son eklenen filmler en sonda yer alıyordu
+
         return(
-           <div className="container">
-            <div className="row">
-                <div className="col-lg-12">
-                    <SearchBar searchMovieProps= {this.searchMovie}></SearchBar>
-                    {/* searchMovieProps searchMovie function ı çalıştırıyor */}
-                </div>
-            </div>
-            <MovieList 
-            movies={filteredMovies}
-            deleteMovieProp= {this.deleteMovie}
-            ></MovieList>
-            {/* deleteMovie function ile delete buttonunu birbirine bağlamak için (yani parent componentten child componente bir bilgi göndereceğiz) en kolay yol deleteMovie functionı PROPS haline dönüştürmektir. Bu yüzden deleteMovieProp adında bir prop yazdık. Bunun içinde this kullanmamızın nedeni de class component olduğu için. */}
+          // sayfayı başka bir sayfaya yönlendirmek için router kullandık
+              <Router>
+                <Routes>
+                  <Route path="/" element ={
+                    <>
+                      <div className="container">
+                      <div className="row">
+                          <div className="col-lg-12">
+                              <SearchBar searchMovieProps= {this.searchMovie}></SearchBar>
+                              {/* searchMovieProps searchMovie function ı çalıştırıyor */}
+                          </div>
+                      </div>
+                      <MovieList 
+                      movies={filteredMovies}
+                      deleteMovieProp= {this.deleteMovie}
+                      ></MovieList>
+                    {/* deleteMovie function ile delete buttonunu birbirine bağlamak için (yani parent componentten child componente bir bilgi göndereceğiz) en kolay yol deleteMovie functionı PROPS haline dönüştürmektir. Bu yüzden deleteMovieProp adında bir prop yazdık. Bunun içinde this kullanmamızın nedeni de class component olduğu için. */}
+                    </div>
+                    </>
+                  }>
+                  </Route>
+                  <Route path="add" element= { <AddMovie
+                  onAddMovie = {(movie) =>{this.addMovie(movie)}}
+                  
+                  ></AddMovie>}></Route>
 
-            <AddMovie></AddMovie>
-           </div>
-
+                  <Route path="edit/:id" element = {
+                    <EditMovie></EditMovie>
+                  }></Route>
+                  
+                </Routes>
+                
+              </Router>
         )
 
     }

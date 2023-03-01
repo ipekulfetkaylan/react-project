@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class SeacrhBar extends React.Component{
 
@@ -40,8 +41,10 @@ class SeacrhBar extends React.Component{
                         */}
                     </div> 
                     <div className="col-3">
-                        <button type="button"
-                        className="btn btn-md btn-danger">Add Movie</button>
+                        <Link 
+                        to= "/add"
+                        type="button"
+                        className="btn btn-md btn-danger">Add Movie</Link>
                     </div>
                 </div>
             </form>

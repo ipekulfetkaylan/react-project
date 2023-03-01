@@ -1,18 +1,25 @@
 {
   "movies": [
     {
-      "name": "Hostage",
-      "rating": "6.3",
-      "imageURL": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/4hne3v6jN4MlCnhSkxOW7YspJhr.jpg",
-      "overwiev": "When a mafia accountant is taken hostage on his beat, a police officer – wracked by guilt from a prior stint as a negotiator – must negotiate the standoff, even as his own family is held captive by the mob.",
-      "id": 13
+      "name": "The Movies",
+      "rating": "7.8",
+      "imageURL": "https://m.media-amazon.com/images/M/MV5BNzU4NWEwNDItMzMzYy00ZDYyLWIxZjMtMDlkYWVjNjQwYzBjXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_FMjpg_UX1000_.jpg",
+      "overview": "A look at the history of movies and their impact on our culture.",
+      "id": 14
     },
     {
-      "name": "Blitz 007",
-      "rating": "11",
-      "overwiev": "A tough, renegade cop with a gay sekick is dispatched to take down a serial killer who has been targeting police officers. AÇIKLAMA AÇIKLAMA",
-      "imageURL": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/qCPMjT8Ld8tvs1zs7LY2jpKlRIK.jpg",
-      "id": 12
+      "name": "Blur",
+      "rating": "8.2",
+      "imageURL": "https://akamaividz2.zee5.com/image/upload/w_504,h_756,c_scale,f_webp,q_auto:eco/resources/0-0-1z5259649/portrait/1920x77098956c98fc1c4bd6a83260bcf11b5357.jpg",
+      "overview": "In the Eighties, stars like Tom Cruise, Meryl Streep and Eddie Murphy explode on the screen. Aliens, time travelers, ghosts and road warriors share the cineplex with troubled teens, battered boxers, classical composers and career girls.",
+      "id": 15
+    },
+    {
+      "name": "The Last Of US",
+      "rating": "8.2",
+      "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkPEEOkdH11STqEE7cGX75gi-pyd-t07riFg&usqp=CAU",
+      "overview": "In the Eighties, stars like Tom Cruise, Meryl Streep and Eddie Murphy explode on the screen. Aliens, time travelers, ghosts and road warriors share the cineplex with troubled teens, battered boxers, classical composers and career girls.",
+      "id": 16
     }
   ]
 }
