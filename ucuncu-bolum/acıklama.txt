@@ -1,0 +1,25 @@
+veriyi context yoluyla iletmenin iki farklı yolu vardır.
+1- default value --------> this.context
+2- Parent component içinde provide compopnent oluşturup göndermek.  provide --------> consumer
+Context içinde varsayılan başlangıç değeri bir array, obje ya da bir değişken olabilir.
+
+1. Yöntem kullanmak için (default value):
+----Context nesnesini oluştur ===> React.createContext
+----Başlangıç değeri ver ve export et ===>export default
+----Kullanmak istediğin componente import et
+----Static contextType a oluşturulan contexti ata
+---- this.context ile ilgili veriye ulaş
+dezavantajı: bu yöntem ile tek bir context gönderebiliriz. Birden fazla context bilgisi göndermek istiyorsak 2. yöntem tercih edilmeli
+
+2. Yöntem kullanmak için daha çok kullanılan bir yöntem 
+verileri düzenlemek silemk ya da değiştirmek isteriz bu yüzden bir tate içinde tutarız contexte atadığımız da da provider ve consumer ile alırız
+---- clas component oluştur ve veriyi state içine koy
+---- contexte ait olan provider ile state te bulunan veriyi al  bu veriyi parent a bu veriyi contextprovider ile gönder
+---- parentten child a veriyi this.props.children ile gönder
+---- veriyi göndereceğin componente veriyi import et
+---- render içinde consumer ile provider dan gelen veriyi ekrana bas
+Functional component ile de kullanılabilir
+
+
+context api ile static verileri göndermeyiz bir apiden aldığımız veri tabanından aldığımız verileri göndeririz. 
+eğer birkaç veri gönderilcek ise o zaman props kullanmak en kolay yoldur
