@@ -68,7 +68,7 @@ class App extends React.Component {
         <div>
              <React.StrictMode>
 
-            {/* veriyi iletmesi için myData ile sarmalıyoruz */}
+            {/* veriyi iletmesi için BookContextProvider ile sarmalıyoruz */}
             <BookContextProvider>
                <BookList></BookList>
             </BookContextProvider>
