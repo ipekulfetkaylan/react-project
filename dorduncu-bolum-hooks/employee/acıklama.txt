@@ -1,0 +1,5 @@
+HOOKS NEDİR?
+Hook bir kodu daha kısa ve daha anlaşılır hale getirmektir. Hooklar önceden sadece class componentlerle yapılan işlemleri functional componentlerle de yapmaya olanak sağlar. Hooks bir js fonksiyonudur.
+En çok kullanılan hookslar useEffect useState useContext tir. 
+
+
