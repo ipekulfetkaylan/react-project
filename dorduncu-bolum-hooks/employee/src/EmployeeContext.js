@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const EmployeeContext = createContext();
 
+//fonksiyonları contextin içinde yazıyoruz. Burada yazmamızın sebebi sonrasında yapmak istediğimiz işlem için context içerisinden fonksiyonu çağıracağız
+
 //provider içine childlar ile paylaşmak istediğimiz veriyi koyuyoruz
 const EmployeeContextProvider = (props) =>{
     const [employees, setEmployees] =useState([
@@ -20,9 +22,23 @@ const EmployeeContextProvider = (props) =>{
         setEmployees([...employees, {id: uuidv4(), name, email, address, phone}]) //yeni bir eleman eklemek demek statin değişmesi demektir
     }
 
+    // seçili olan id ye ait olan çalışan bilgisini silmek istediğimiz için parametre olarak id aldık
+    const deleteEmployee = (id)=>{
+        setEmployees(employees.filter(employee => employee.id !== id))
+    }
+
+    // employee düzenleme function. Çalışan bilsigini güncellemek için bize iki bilgi gerekli. 1- hangi çalışan bilgisini güncelleyeceğiz (id) 2- güncellenmiş bilgi
+    const updateEmployee = (id, updatedEmployee) => {
+        setEmployees(employees.map((employee) => (employee.id === id ? updatedEmployee : employee)))
+    }
+    //yapmak istediğimiz yeni çalışan bilgisini alıp employees arrayine yerleştirmek bunun için önce güncellenmiş bilgiyi bulmamız lazım bunun için id yi alıyoruz sonrada güncellenmiş çaşlışanı çalışan ile değiştiriyoruz. 
+
+
+
+
     
     return (
-        <EmployeeContext.Provider  value = {{employees, addEmployee}}> 
+        <EmployeeContext.Provider  value = {{employees, addEmployee, deleteEmployee, updateEmployee}}> 
         {/* contexten addEmployee yi export etmemizin sebebi EmployeeContext çağırdığımız yerde kullanabilmek. Yani formda addEmployee yi kullanabilmek için */}
             {props.children}
         </EmployeeContext.Provider>

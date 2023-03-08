@@ -20,7 +20,7 @@ const EmployeeList= ()=>{
     */
 
     const {employees}= useContext(EmployeeContext)
-    //useContext direkt iletmek istediği veriyi alıyor EmployeeContext kendisini yazıyorız providerı değil peki neyi iletmek istiyor? employees bilgisini destructing yöntemi ile employeesi alıyoruz
+    //useContext direkt iletmek istediği veriyi alıyor EmployeeContext kendisini yazıyorız providerı değil peki neyi iletmek istiyor? employees bilgisini. destructing yöntemi ile employeesi alıyoruz
 
    
 // modalın görünmesini bir state atadık. Modalın görünmesi ya da görünmemesi componentin durumuna bağlı. Model göründüğünde state değişecek modal kaybolduğunda state yeniden değişecek yani modalın gösterilip ya da gösterilmemesini bir state olarak tanımladık
@@ -28,7 +28,7 @@ const EmployeeList= ()=>{
     const handleClose= () => setShow(false)
     const handleShow= () => setShow(true)
 
-    
+
 //bir çalışan ekledikten sonra modalın kapanmasını sağlamak için useEffecti kullandık. useEffect uygulamada bir işlem bir değişikliğe tepki olarak cmponentin tekrar render edilmesidir. Bu render ilk işlemden sonra da olur her güncellemeden sonra da olabilir.  useEffect bir işlem yaparken yanın da başka bir işlem de yapıldığında (sideEffect) kullanılır daha çok. Eğer bir şart yazılmaz ise her işlemde çalışır biz her işlemde çalışmasını her zaman istemeyebiliriz. Sadece başlangıçta çalışmasını istiyorsak [] yazarız burada o yüzden [employees] i yazdık. Yani employees da bir değişiklik olduğunda çalış anlamına geliyor
     useEffect(()=>{
       handleClose();
@@ -62,8 +62,17 @@ const EmployeeList= ()=>{
                 </tr>
             </thead>
             <tbody>
-               <Employee employees={employees}></Employee>
-               {/* props yardımı ile bilgiyi employee componentine gönderebiliriz */}
+               {/* <Employee employees={employees}></Employee> */}
+               {/* props yardımı ile bilgiyi employee componentine gönderebiliriz. İlk olarak employees i burdan alıp Employee de çağırmıştık ancak kodun daha okunabilir olması için map ile burada yazdık*/}
+               {
+                employees.map(employee => (
+                  <tr key={employee.id}>
+                    <Employee employee={employee}></Employee>
+                  </tr>
+
+                    
+                ))
+               }
             </tbody>
         </table>
 
