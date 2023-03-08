@@ -1,4 +1,4 @@
-import {useState, useContext} from 'react'
+import {useState, useContext, useEffect} from 'react'
 import Button from 'react-bootstrap/esm/Button';
 import Modal from 'react-bootstrap/Modal';
 import { EmployeeContext } from '../EmployeeContext';
@@ -27,6 +27,12 @@ const EmployeeList= ()=>{
     const [show, setShow]= useState(false);
     const handleClose= () => setShow(false)
     const handleShow= () => setShow(true)
+
+    
+//bir çalışan ekledikten sonra modalın kapanmasını sağlamak için useEffecti kullandık. useEffect uygulamada bir işlem bir değişikliğe tepki olarak cmponentin tekrar render edilmesidir. Bu render ilk işlemden sonra da olur her güncellemeden sonra da olabilir.  useEffect bir işlem yaparken yanın da başka bir işlem de yapıldığında (sideEffect) kullanılır daha çok. Eğer bir şart yazılmaz ise her işlemde çalışır biz her işlemde çalışmasını her zaman istemeyebiliriz. Sadece başlangıçta çalışmasını istiyorsak [] yazarız burada o yüzden [employees] i yazdık. Yani employees da bir değişiklik olduğunda çalış anlamına geliyor
+    useEffect(()=>{
+      handleClose();
+    }, [employees])
 
     return(
         

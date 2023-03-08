@@ -17,7 +17,7 @@ const AddForm = ()=>{
 
     */
 
-    // 2.Yöntem
+    // 2.Yöntem burada tüm form elemanları bir satatin içinde
    const [newEmployee, setNewEmployee] = useState ({
     name:"", email:"", phone:"", address:""
    })
