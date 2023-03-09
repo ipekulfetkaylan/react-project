@@ -17,6 +17,11 @@ const EmployeeContextProvider = (props) =>{
         {id:uuidv4(), name: 'Martin Blank', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'}
     ])
 
+    
+    // çalışanları burada da sıralyabiliriz. burada çalışanları daha göndermeden en başta sıralıyoruz. Sonra burada artık employees yerine sortedEmployees göndreceğiz
+     const sortedEmployees = employees.sort((a,b)=>(a.name < b.name ? -1 : 1));
+    
+
     //yeni çalışan eklemek için bu function ı yazdık
     const addEmployee = (name, email, address, phone) =>{
         setEmployees([...employees, {id: uuidv4(), name, email, address, phone}]) //yeni bir eleman eklemek demek statin değişmesi demektir
@@ -38,7 +43,7 @@ const EmployeeContextProvider = (props) =>{
 
     
     return (
-        <EmployeeContext.Provider  value = {{employees, addEmployee, deleteEmployee, updateEmployee}}> 
+        <EmployeeContext.Provider  value = {{sortedEmployees, addEmployee, deleteEmployee, updateEmployee}}> 
         {/* contexten addEmployee yi export etmemizin sebebi EmployeeContext çağırdığımız yerde kullanabilmek. Yani formda addEmployee yi kullanabilmek için */}
             {props.children}
         </EmployeeContext.Provider>
