@@ -51,12 +51,15 @@ const EmployeeList= ()=>{
 
 
     const [currentPage, setCurrentPage]= useState(1); //başlangıç olarak 1. sayfadan başlamasını istiyoruz
-    const [employeesPerPage, setEmployeesPerPage]= useState(2); // sayfada kaç çalışan göstermek istiyorsak başlangıca o değeri veriyoruz
+    const [employeesPerPage]= useState(4); // sayfada kaç çalışan göstermek istiyorsak başlangıca o değeri veriyoruz
 
     const indexOfLastEmployee= currentPage * employeesPerPage; //son sayfayı o andaki sayfa ile sayfada gösterilen çalışan sayısını çarparak bukduk
     const indexOfFirstEmployee = indexOfLastEmployee - employeesPerPage; // ilk sayfayı da son sayfadan sayfada gösterilen çalışan sayısını çıkararak bulduk.
-    const currenEmployees = sortedEmployees.slice(indexOfFirstEmployee, indexOfLastEmployee); //sayfada gösterilmesini istediğimiz çalışanları göstermek için her ne kadar bunu yukarı da 2 olarak belirtsek de normal çalışanlar içinden bu ikisi slice etmeli
-    const totalPagesNum = Math.ceil(sortedEmployees.length /employeesPerPage) //toplam sayfa numarası da çalışanların sayfada göstrine bölerek bulduk
+    const currentEmployees = sortedEmployees.slice(indexOfFirstEmployee, indexOfLastEmployee); //sayfada gösterilmesini istediğimiz çalışanları göstermek için her ne kadar bunu yukarı da 2 olarak belirtsek de normal çalışanlar içinden bu ikisi slice etmeli
+    const totalPagesNum = Math.ceil(sortedEmployees.length /employeesPerPage)//toplam sayfa numarası da çalışanların sayfada göstrine bölerek bulduk
+
+    
+  
 
 
    
@@ -97,7 +100,7 @@ const EmployeeList= ()=>{
                {
                 // eklenen çalışanlar sıralı bir şekilde gelmiyor sıralamak için 1. yöntem sort().localeCompare metodunu kullanabiliriz örn:employees.sort((a,b)=>a.name.localeCompare(b.name)).map  2.yöntem ise direkt sort kullanmak
 
-                currenEmployees.map(employee => (
+                currentEmployees.map(employee => (
                   <tr key={employee.id}>
                     <Employee employee={employee}></Employee>
                   </tr>
@@ -105,8 +108,12 @@ const EmployeeList= ()=>{
                }
             </tbody>
         </table>
-        
-        <Pagination totalPages= {totalPagesNum} setCurrentPage= {setCurrentPage} currenEmployees={currenEmployees} sortedEmployees={sortedEmployees} ></Pagination>
+        <Pagination 
+            pages = {totalPagesNum} 
+            setCurrentPage  =   {setCurrentPage}
+            currentEmployees = {currentEmployees} 
+            sortedEmployees = {sortedEmployees}
+            />
 
         <Modal show= {show} onHide= {handleClose}>
           <Modal.Header >

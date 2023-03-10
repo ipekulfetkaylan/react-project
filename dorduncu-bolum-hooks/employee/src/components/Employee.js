@@ -3,6 +3,9 @@ import { EmployeeContext } from '../EmployeeContext';
 import Button from 'react-bootstrap/esm/Button';
 import Modal from 'react-bootstrap/Modal';
 import EditForm from './EditForm';
+import Tooltip from 'react-bootstrap/Tooltip';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+
 
 const Employee= ({employee})=>{
 
@@ -46,10 +49,14 @@ const Employee= ({employee})=>{
         <td>{employee.address}</td>
         <td>{employee.phone}</td>
         <td>
-            <button onClick={handleShow}  className="btn text-warning btn-act" data-toggle="modal"><i className="fa-solid fa-pencil"></i></button>
-            
-            <button onClick={() => deleteEmployee(employee.id)} className="btn text-danger btn-act" data-toggle="modal"><i className="fa-solid fa-trash"></i> 
-            </button>
+            {/* id ye tooltip-top vermemeizin sebebi tooltipin topta görünmesini sağlamak */}
+            <OverlayTrigger overlay={<Tooltip id={`tooltip-top`}>Edit</Tooltip>}> 
+            <button onClick={handleShow}  className="btn text-warning btn-act" ><i className="fa-solid fa-pencil"></i></button>
+            </OverlayTrigger>
+
+            <OverlayTrigger overlay={<Tooltip id={`tooltip-top`}>Delete</Tooltip>}>
+            <button onClick={() => deleteEmployee(employee.id)} className="btn text-danger btn-act"><i className="fa-solid fa-trash"></i></button>            
+            </OverlayTrigger>
         </td>
         <Modal show={show} onHide= {handleClose}>
             <Modal.Header >
