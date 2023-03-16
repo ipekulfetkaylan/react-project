@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -20,6 +20,18 @@ const EmployeeContextProvider = (props) =>{
         {id:uuidv4(), name: 'Martin Blank', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'},
         {id:uuidv4(), name: 'Martin Blank', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097'}
     ])
+
+    
+    useEffect(()=>{
+        const employees = localStorage.getItem('employees');
+        setEmployees(JSON.parse(employees));
+    },[])
+    // useEffect setEmployees a bir çağrı yaptığı için sayfada sürekli bir güncellemeye yol açıyor bu yüzden ikinci parametre olarak [] verdik
+
+    useEffect(() =>{
+        localStorage.setItem('employees', JSON.stringify(employees));
+    })
+
 
     
     // çalışanları burada da sıralyabiliriz. burada çalışanları daha göndermeden en başta sıralıyoruz. Sonra burada artık employees yerine sortedEmployees göndreceğiz

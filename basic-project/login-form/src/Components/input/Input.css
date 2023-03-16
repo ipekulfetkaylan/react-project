@@ -1,0 +1,12 @@
+.input{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    width: 70%;
+    padding: 10px;
+    outline: none;
+    font-size: 20px;
+}
