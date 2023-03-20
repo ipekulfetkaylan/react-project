@@ -85,7 +85,6 @@ const [basket, setBasket]= useState([])
               return <li key={index}>
                 {product.title + "------>" + product.info + "-----> Adet:" + product.adet}
               </li>
-
             })
           }
         </ul>
