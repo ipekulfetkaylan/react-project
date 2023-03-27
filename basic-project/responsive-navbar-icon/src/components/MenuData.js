@@ -2,31 +2,31 @@
 export const MenuData = [
     {
         title:"Home",
-        url:"#",
+        url:"/",
         cName:"nav-links",
         icon:"fa-solid fa-house-user"
     },
     {
         title:"About",
-        url:"#",
+        url:"/About",
         cName:"nav-links",
         icon:"fa-solid fa-circle-info"
     },
     {
         title:"Service",
-        url:"#",
+        url:"/Service",
         cName:"nav-links",
         icon:"fa-solid fa-briefcase"
     },
     {
         title:"Contact",
-        url:"#",
+        url:"/Contact",
         cName:"nav-links",
         icon:"fa-solid fa-address-book"
     },
     {
         title:"Sign Up",
-        url:"#",
+        url:"/Sign",
         cName:"nav-links-mobile",
     }
 ]

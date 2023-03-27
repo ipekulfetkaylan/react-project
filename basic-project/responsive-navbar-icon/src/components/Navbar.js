@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { MenuData } from "./MenuData";
+import {Link, Outlet} from 'react-router-dom'
 import "./Navbar.css";
 
 function Navbar (){
@@ -20,10 +21,10 @@ function Navbar (){
                     MenuData.map((item,index)=>{
                         return(
                             <li key={index} className={item.cName}>
-                                <a href={item.url}>
+                                <Link to={item.url}>
                                     <i className={item.icon}></i>
                                     {item.title}
-                                </a>
+                                </Link>
                             </li>
                         )
                     })
