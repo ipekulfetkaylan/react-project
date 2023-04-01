@@ -1,6 +1,11 @@
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function Todo({text, todos, setTodos, todo}){
+
     const deleteHandler= ()=>{
         setTodos(todos.filter((el)=> el.id !== todo.id))
+        toast.warning("Bir Todo Silindi!")
     }
 
     const completedHandler= ()=>{
@@ -12,6 +17,8 @@ function Todo({text, todos, setTodos, todo}){
             }
             return item
         }))
+        toast.success("Görev Tamamlandı! Tebriklerrr")
+
     }
     return(
         <div className="todo-item todo">
@@ -23,9 +30,21 @@ function Todo({text, todos, setTodos, todo}){
               <button className="todoBtn"  onClick={deleteHandler}>
               <i className="fas fa-trash-alt"></i>
               </button>
+              <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark" 
+      />
         </div>
     )
 }
-<i class="fa-solid fa-check"></i>
+
 
 export default Todo

@@ -111,6 +111,7 @@ body.light .card{
   align-items: center;
   padding: 10px 0px;
   border-bottom: 3px solid #ff4f81;
+  justify-content: space-between;
 
 }
 
@@ -155,6 +156,9 @@ body.light .todo-item{
   outline: none;
   color: white;
   cursor: pointer;
+}
+.todoBtn option{
+  background-color: black;
 }
 .card-footer{
   padding: 10px 0px;

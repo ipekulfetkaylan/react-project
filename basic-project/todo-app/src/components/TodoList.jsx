@@ -1,12 +1,12 @@
 import Todo from "./Todo";
 
-function TodoList({todos, setTodos}){
+function TodoList({todos, setTodos, filteredTodos}){
 
     return(
         <div>
           <ul data-filter="0" className="todo-list" id="todo-list">
             {
-                todos.map((todo)=>{
+                filteredTodos.map((todo)=>{
                    return <Todo key={todo.id} text={todo.text} todos={todos} setTodos={setTodos} todo={todo} />
                 })
             }
