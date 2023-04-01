@@ -3,7 +3,8 @@ import TodoList from "./TodoList";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function Form({inputText, setInputText}) {
+function Form() {
+  const [inputText, setInputText]= useState("");
   const [todos, setTodos]= useState([]);
   const [status, setStatus]= useState("all");
   const [filteredTodos, setFilteredTodos]= useState([]);

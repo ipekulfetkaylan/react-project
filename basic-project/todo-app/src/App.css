@@ -24,16 +24,7 @@ body::before{
   background: linear-gradient(#ff4f81, #f0f);
   clip-path: circle(20% at right 90%);
 }
-body::after{
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(#ff4f81, #f0f);
-  clip-path: circle(20% at left 20%);
-}
+
 .mode{
   display: flex;
   align-items: center;
@@ -89,7 +80,7 @@ body.light .switch:before{
   max-width: 800px;
   z-index: 1;
   margin: auto;
-  margin-top: -35px;
+  margin-top: 135px;
 }
 .card{
   position: relative;
