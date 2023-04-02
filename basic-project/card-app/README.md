@@ -1,3 +1,7 @@
+# Card-app ön izleme
+
+![Website örnek resim](./src/assests/readMe-img/card-app.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
