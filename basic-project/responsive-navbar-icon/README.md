@@ -1,4 +1,4 @@
-# Login form ön izleme
+# Responsive navbar ön izleme
 
 ![Website örnek resim](./src/assets/readMe-img/responsive-navbar.png)
 ![Website örnek resim](./src/assets/readMe-img/responsive-navbar2.png)
