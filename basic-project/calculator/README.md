@@ -1,4 +1,4 @@
-#Calculator ön izleme
+# Calculator ön izleme
 
 ![Website örnek resim](./src/assets/readMe-img/calculator.png)
 
